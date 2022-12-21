@@ -1,12 +1,10 @@
-class User:
+from question_model import Question
+from data import question_data
 
-    def __init__(self, user_id, name):
-        print("new user being created ")
-        self.id = user_id
-        self.username = name
+question_bank = []
 
+for question in question_data:
+    new_question = Question(question["text"], question["answer"])
+    question_bank.append(new_question)
 
-user_1, user_2 = User("001", "Eric Qiu"), User("002", "Daniel Park")
-
-print(user_1.username)
-print(user_2.id)
+print(question_bank)
