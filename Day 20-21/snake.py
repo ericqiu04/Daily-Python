@@ -1,18 +1,27 @@
 import turtle as t
 
 screen = t.Screen()
+screen.setup(width = 1000, height = 1000)
 screen.bgcolor("black")
+screen.title("Snake Game")
 
-b1 = t.Turtle()
-b1.color("green")
-b1.shape("square")
 
-b2 = t.Turtle()
-b2.color("green")
-b2.shape("square")
 
-b3 = t.Turtle()
-b3.color("green")
-b3.shape("square")
+starting_positions = [(-20,0), (0,0), (20,0)]
+
+segments = []
+for position in starting_positions:
+    new_segment = t.Turtle()
+    new_segment.shape("square")
+    new_segment.color("light green")
+    new_segment.penup()
+    new_segment.setpos(position)
+    segments.append(new_segment)
+
+game_is_on = True
+
+while game_is_on:
+    for s in segments:
+        s.forward(10)
 
 screen.exitonclick()
