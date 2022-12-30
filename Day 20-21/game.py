@@ -49,7 +49,15 @@ while game_is_on:
         food = Food()
         score.clear()
         screen.title(score.getScore())
+        snake.extend()
+        for s in snake.segments:
+            print(s.position())
 
+    #collision with tail
+    for s in snake.segments[1:]:
+        if snake.head.distance(s) < 10:
+            game_is_on = False
+            score.gameOver()
     #collision with walls
     if snake.head.xcor() >480 or snake.head.xcor() < -480 or snake.head.ycor() >480 or snake.head.ycor() < -480:
         game_is_on = False

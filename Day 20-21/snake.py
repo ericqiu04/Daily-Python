@@ -1,5 +1,5 @@
 import turtle as t
-STARTING = [(-20,0), (0,0), (20,0)]
+STARTING = [(20,0), (0,0), (-20,0)]
 UP = 90
 DOWN = 270
 RIGHT = 0
@@ -9,21 +9,27 @@ class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
-        self.head = self.segments[len(self.segments) - 1]
+        self.head = self.segments[0]
 
     def create_snake(self):
         for position in STARTING:
-            new_segment = t.Turtle()
-            new_segment.shape("square")
-            new_segment.color("light green")
-            new_segment.penup()
-            new_segment.setpos(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
+    def add_segment(self, position):
+        new_segment = t.Turtle()
+        new_segment.shape("square")
+        new_segment.color("light green")
+        new_segment.penup()
+        new_segment.setpos(position)
+        self.segments.append(new_segment)
+        print('added')
 
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
+        print('created new')
     def move(self):
-        for s in range(0, len(self.segments) - 1, 1):
-            newx = self.segments[s + 1].xcor()
-            newy = self.segments[s + 1].ycor()
+        for s in range(len(self.segments) - 1,0 , -1):
+            newx = self.segments[s-1].xcor()
+            newy = self.segments[s-1].ycor()
             self.segments[s].goto(newx, newy)
         self.head.forward(20)
 
