@@ -3,6 +3,7 @@ import time
 from snake import Snake
 from food import Food
 
+score = 0
 screen = t.Screen()
 screen.setup(width = 1000, height = 1000)
 screen.bgcolor("black")
@@ -25,6 +26,15 @@ while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
+
+    #see if touching
+    if snake.head.distance(food) < 20:
+        food.hideturtle()
+        score +=1
+        del food
+        print("nom nom")
+        food = Food()
+
 
 
 
