@@ -50,8 +50,6 @@ while game_is_on:
         score.clear()
         screen.title(score.getScore())
         snake.extend()
-        for s in snake.segments:
-            print(s.position())
 
     #collision with tail
     for s in snake.segments[1:]:

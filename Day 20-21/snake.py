@@ -21,11 +21,9 @@ class Snake:
         new_segment.penup()
         new_segment.setpos(position)
         self.segments.append(new_segment)
-        print('added')
 
     def extend(self):
         self.add_segment(self.segments[-1].position())
-        print('created new')
     def move(self):
         for s in range(len(self.segments) - 1,0 , -1):
             newx = self.segments[s-1].xcor()
